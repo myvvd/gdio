@@ -1,0 +1,209 @@
+<extend name="Public:base" />
+<block name="header_js">
+<script type="text/javascript" src="__PUBLIC__/js/calendar.config.js"></script>
+
+<script type="text/javascript" src="__DATA__/editor/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__DATA__/editor/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+$(function(){
+    var ue = UE.getEditor('inputContent',{
+        serverUrl :"{:U('Public/editorMethod')}"
+    });
+	var uet = UE.getEditor('yaoqiu',{
+        serverUrl :"{:U('Public/editorMethod')}"
+    });
+})
+</script>
+
+</block>
+
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header"><em class="glyphicon glyphicon-cloud-upload"></em> 
+			修改职位
+		    </h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('update')}" onsubmit="return checkesub()">	
+					<div class="form-group">
+						<label for="inputzhiwei" class="col-sm-2 control-label">职位名称</label>
+						<div class="col-sm-9">
+							<input type="text" name="zhiwei" id="zhiwei" class="form-control" placeholder="职位名称" value="{$data.zhiwei}"/>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputrenshu" class="col-sm-2 control-label">招聘人数</label>
+						<div class="col-sm-9">
+							<input type="text" name="renshu" id="renshu" class="form-control" placeholder="招聘人数" value="{$data.renshu}" />				
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputbumen" class="col-sm-2 control-label">部门</label>
+						<div class="col-sm-9">
+							<input type="text" name="bumen" id="bumen" class="form-control" placeholder="部门" value="{$data.bumen}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputdiqu" class="col-sm-2 control-label">工作地区</label>
+						<div class="col-sm-9">
+							<input type="text" name="diqu" id="diqu" class="form-control" placeholder="工作地区" value="{$data.diqu}" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputxueli" class="col-sm-2 control-label">学历</label>
+						<div class="col-sm-9">
+							<input type="text" name="xueli" id="xueli" class="form-control" placeholder="学历" value="{$data.xueli}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputxingzhi" class="col-sm-2 control-label">性质</label>
+						<div class="col-sm-9">
+							<input type="text" name="type" id="type" class="form-control" placeholder="性质" value="{$data.type}" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputgongling" class="col-sm-2 control-label">工作经验</label>
+						<div class="col-sm-9">
+							<input type="text" name="gongling" id="gongling" class="form-control" placeholder="工作经验" value="{$data.gongling}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputendtime" class="col-sm-2 control-label">结束时间</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="endtime" id="inputPublishtime" value="{$data.endtime|date='Y-m-d H:i:s',###}">
+			                <script type="text/javascript">
+			                    Calendar.setup({
+			                        weekNumbers: true,
+			                        inputField : "inputPublishtime",
+			                        trigger    : "inputPublishtime",
+			                        dateFormat: "%Y-%m-%d %H:%M:%S",
+			                        showTime: true,
+			                        minuteStep: 1,
+			                        onSelect   : function() {this.hide();}
+			                    });
+			                </script>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputzhize" class="col-sm-2 control-label">职责</label>
+						<div class="col-sm-9">
+							<input type="text" name="zhize" id="zhize" class="form-control" placeholder="职责" value="{$data.zhize}" />
+						</div>
+					</div>
+					<!--
+					<div class="form-group">
+						<label for="inputyaoqiu" class="col-sm-2 control-label">要求</label>
+						<div class="col-sm-9">
+							<textarea name="yaoqiu" id="yaoqiu" style="height: 370px;">{$data.yaoqiu}</textarea>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputContent" class="col-sm-2 control-label">详细信息</label>
+						<div class="col-sm-9">
+							<textarea name="content" id="inputContent" style="height: 370px;">{$data.content}</textarea>						
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="inputContent" class="col-sm-2 control-label">要求</label>
+						<div class="col-sm-9">
+								
+							<script charset="utf-8" src="__DATA__/editor/kindeditor/kindeditor-min.js"></script>
+								<script>
+									var editor;
+										KindEditor.ready(function(K) {
+											editor = K.create('textarea[name="yaoqiu"]', {
+												allowFileManager : true,
+												width : '98%',
+												height: '300px',
+												resizeType: 0    //固定宽高
+											});
+										});
+								</script>
+								<textarea id ="yaoqiu" name="yaoqiu" >{$data.yaoqiu}</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputContent" class="col-sm-2 control-label">详细信息</label>
+						<div class="col-sm-9">
+							
+							
+							
+								<script>
+									var editor;
+										KindEditor.ready(function(K) {
+											editor = K.create('textarea[name="content"]', {
+												allowFileManager : true,
+												width : '98%',
+												height: '300px',
+												resizeType: 0    //固定宽高
+											});
+										});
+								</script>
+								<textarea id ="content" name="content" >{$data.content}</textarea>
+						</div>
+					</div>
+					<div class="row margin-botton-large">
+						<div class="col-sm-offset-2 col-sm-9">
+							<div class="btn-group">	
+					<input type="hidden" value="{$data.job_id}" name="job_id">
+								<button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-saved"></i>
+									保存
+								</button>
+								<button type="button" onclick="goUrl('{:U('index')}')" class="btn btn-default"> <i class="glyphicon glyphicon-chevron-left"></i>
+									返回
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+<script language="JavaScript">
+function checkesub(){
+	var zhiwei = $("#zhiwei").val();
+	var renshu = $("#renshu").val();
+	var bumen = $("#bumen").val();
+	var diqu = $("#diqu").val();
+	var xueli = $("#xueli").val();
+	var type = $("#type").val();
+	var gongling = $("#gongling").val();
+	var zhize = $("#zhize").val();
+	var msg = '';
+	if(zhiwei.length == 0){
+		msg +='请输入职位名称\n';
+	}
+	if(renshu.length == 0){
+		msg +='请输入招聘人数\n';
+	}
+	if(bumen.length == 0){
+		msg +='请输入职位部门\n';
+	}
+	if(diqu.length == 0){
+		msg +='请输入工作地区\n';
+	}
+	if(xueli.length == 0){
+		msg +='请输入学历要求\n';
+	}
+	if(type.length == 0){
+		msg +='请输入性质\n';
+	}
+	if(gongling.length == 0){
+		msg +='请输入工作经验\n';
+	}
+	if(zhize.length == 0){
+		msg +='请输入职责\n';
+	}
+	if (msg.length > 0){
+		alert(msg);
+		return false;
+	}
+	return true;
+  }
+</script>
+		</div>
+	</div>
+</block>

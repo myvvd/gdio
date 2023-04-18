@@ -1,0 +1,107 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+<title>网站后台</title>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" type="text/css" href="__DATA__/newstatic/css/style.css">
+<link rel="stylesheet" type="text/css" href="__DATA__/newstatic/css/responsive.css">
+<script src="__DATA__/newstatic/js/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__DATA__/newstatic/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script type="text/javascript" src="__DATA__/static/jq_plugins/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/login.js?v20160625000"></script>
+</head>
+<body>
+<section class="banner">
+<!--登录内容 开始-->
+	<div class="mdldw">
+    	<div class="nmdlk">
+        	<div class="dllogo">
+			
+			<img src="__DATA__/newstatic/images/dllogo.png"></div>
+            <div class="w100">
+            	<div class="dlbt">网站信息管理系统<span>Welcome to Wangyi Backstage</span></div>
+                
+              <div class="dengluk">
+                	<div class="dlzuo">
+                    	<div class="section-focus-pic" id="section-focus-pic">
+	<div class="pages" data-scro="list">
+		<ul>
+			<?php $i=1;?>
+			<foreach name='rows' item='vs'>	
+			<li class="item" <if condition="$i eq 1">style="left:0px;" </if>><a href="http://www.w-e.cc/" target="_blank"><img src="{$vs.logo}" width="100%"></a></li>
+			<?php $i++;?>	</foreach>
+		</ul>
+	</div>
+	<div class="controler" data-scro="controler">
+		<?php $i=1;?>
+		<foreach name='rows' item='vs'>	
+		<b <if condition="$i eq 1">class="down"</if>>{$i}</b>
+		<?php $i++;?>	</foreach>
+	</div>
+	<div class="controler2" data-scro="controler2">
+		<a href="#" class="prev"><i></i></a>
+		<a href="#" class="next"><i></i></a>
+	</div>
+</div>
+						<div class="clearfix"></div>
+                    </div>
+                    <div class="dlyou">
+                    <div class="dlybt">登录</div>
+<form action="{:U('Login/login')}" method="post" id="LoginForm">	                   
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="denglu">
+  <tbody><tr>
+    <td colspan="2"><input name="username" type="text" class="dlbga" value="" placeholder="账号" onfocus="if(this.value=='请输入用户名'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入账号'){this.value='请输入账号';this.style.color='gray';}"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input name="password" type="password" class="dlbga" value="" placeholder="密码"></td>
+  </tr>
+ <tr>
+        <td width="60%" align="left"><input name="code" class="dlbgc" type="text" value="" placeholder="验证码" ></td>
+        <td width="40%" align="right">
+		
+		<img src="{:U('Login/verify',array('id' => 'a_login_1'))}" data-url="{:U('Login/verify',array('id' => 'a_login_1'))}" align="absmiddle" id="vcode"  class="vcode" width="95%" height="69" style="margin-bottom:5%;"/>
+		</td>
+      </tr>
+  <tr>
+    <input type="hidden" name="act" value="signin">
+    <td colspan="2"><input type="submit" name="dosubmit" id="button" value="登 陆" class="dldl"></td>
+  </tr>
+</tbody>
+</table>
+</form>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>  
+            </div>
+        </div>
+        <div class="footer"><a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">网站建设</a> | <a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">网络推广</a> | <a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">软件开发</a> | <a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">服务外包</a> | <a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">营销策划</a> | <a href="http://www.w-e.cc/" target="_blank" style="color: #989898;">域名主机</a> | <a href="http://www.w-e.cc/" target="_blank"style="color: #989898;">企业邮箱</a></div>
+    </div>
+	<style>
+.layui-layer-dialog .layui-layer-content { background:none;}
+
+</style>
+<!--登录内容 结束-->
+  <ul class="bannerfix slides clearfix">
+    <li>
+			<foreach name='row' item='v'>
+			<img class="bimg" src="{$v.logo}"/>
+			</foreach>
+    </li>
+  </ul>
+</section>
+<script src="__DATA__/newstatic/js/plugin.js"></script>
+<script src="__DATA__/newstatic/js/index.js"></script>
+<script src="__DATA__/newstatic/js/page.js"></script>
+<script type="text/javascript" src="__DATA__/newstatic/js/script.js"></script>
+</body>
+</html>
+
+
+

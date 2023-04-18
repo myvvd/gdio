@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>后台管理</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/Ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/morris.js/morris.css">
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/style.css">
+
+
+<script type="text/javascript" src="__DATA__/static/js/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/js/frame.js?v20180501" language="javascript" type="text/javascript"></script>
+<link href="__PUBLIC__/css/frame.css" rel="stylesheet" type="text/css" />
+
+<!--[if lt IE 9]>
+<script src="__DATA__/newstatic/dist/js/html5shiv.min.js"></script>
+<script src="__DATA__/newstatic/dist/js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body class="hold-transition skin-black sidebar-mini">
+<iframe class="iframemask"></iframe>
+
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="{:C('CFG_WEBURL')}" target="_blank" class="logo">
+      <span class="logo-mini"><img src="__DATA__/newstatic/images/logo.png"></span>
+      <span class="logo-lg"><img src="__DATA__/newstatic/images/logo.png"></span>
+    </a>
+
+    <nav class="navbar navbar-static-top">
+    <button type="button" class="font18 black btnnoe acity" data-toggle="modal" data-target="#modal-default">自定义服务</button>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav pt20">
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="border:none;">
+             <i class="fa fa-search"></i>
+             <span>搜索</span>
+            </a>
+            <div class="dropdown-menu" style="top:130%;">
+              <form action="#" method="get" class="sidebar-form">
+              <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                      </button>
+                    </span>
+              </div>
+            </form>
+            </div>
+          </li>
+          <li class="">
+            <a href="#">
+              <span class="">English</span>
+            </a>
+          </li>
+          <li class="dropdown tasks-menu">
+            <a href="http://www.w-e.cc/fwyzc/bangzhu/201/1.html" target="_blank">
+              <span>帮助</span>
+            </a>
+          </li>
+          <li class="dropdown user user-menu">
+            <a href="{:U('Rbac/index')}" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">{$Think.session.yang_adm_username}</span>
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header">
+                <a href="{:U('Rbac/index')}">账户中心</a>
+                <a href="#">管理员设置</a>
+                <a href="#">费用中心</a>
+                <a href="#">投诉建议</a>
+              </li>
+              <li class="user-body">
+                <div class="row">
+                  <div class="text-center">
+                    <a href="{:U('Login/logout')}">退出</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+         <li><a href="{:U('Guestbook/index')}"><i class="fa  fa-bell-o"></i><span class="label label-warning" style="top:-6px; background-color:#0089F0;right:inherit; left:31px;">{$count}</span></a></li>
+         <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-clock-o"></i>
+            </a>
+            <ul class="dropdown-menu" style="width:200px;">
+              <li class="user-body" style="border:none; text-align:center;">
+                    <volist name='qmenu' key='kt' id='vt'>
+					<a href="{:U($vt['url'])}">{$vt.name}</a>
+					</volist>  
+              </li>
+            </ul>
+          </li>
+          <li><a href="{:C('CFG_WEBURL')}" target="_blank"><i class="fa  fa-tv"></i></a></li>
+          
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+<!--自定义服务 弹出 开始-->  
+  <div class="modal fade" id="modal-default" id="wrap2" style="z-index:9999;">
+	<div class="city">
+		<div class="top01-city"  >
+        <div class="modal-header bordl">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"data-dismiss="modal" aria-label="Close">×</span></button>
+                <h4 class="modal-title font22">我的自定义服务<span class="font14"></span></h4>
+        </div>
+		</div>
+		<div class="mid01-city">
+			<div class="cityshow" id="show">
+				<ul></ul>	
+			</div>
+			<div class="cityshow1" id="show1">
+				
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('navedit')}">	
+				<table width="100%">
+                  <tr>
+                      <td colspan="1"></td>
+                  </tr>
+                  <tr>
+                  <td>
+                      <ul class="cityul">
+					  <?php  $i=1;?>
+					  <foreach name='menu' key='k' item='v'>
+					  <volist name='v["child"]' key='k2' id='v2'>
+					   <if condition="$v2['id'] neq 6 && $v2['id'] neq 7">
+					  <li><strong>{$v2.name}</strong>
+                          <volist name='v2["child"]' key='k3' id='v3'>
+						  <a data="{$v3.id}"><b>{$v3.name}</b></a>
+						   </volist>  
+                      </li>
+						<if condition="$k eq 4"><div class="clearfix"></div></if>
+					 </if>
+					  </volist>
+					  <?php  $i++;?>
+					  </foreach>
+                      </ul>
+                  </td>
+                  </tr>
+                  <tr>
+				  <input type="hidden" name="checknav" value="" id="checknav" style="width:100%;">
+                      <td align="center">
+					  <a class="lanbtn" href="javascript:js_method();">确定</a>
+					  <a class="lanbtn" data-dismiss="modal" aria-label="Close">取消</a></td>
+                  </tr>
+        		</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--自定义服务 弹出 结束-->  
+  <!-- 左侧导航 开始 -->
+  <aside class="main-sidebar">
+    <section class="sidebar" id="nav">
+      <ul class="sidebar-menu" data-widget="tree">
+		<foreach name='menu' key='k' item='v'>
+		<li class="active treeview menu-open" id="menu_{$k}">
+          <a <empty name='k'>class="thisclass"</empty> href="#" _for="left_menu_{$k}">
+            <i class="glyphicon"></i> <span>{$v.name}</span>
+          </a>
+        </li>
+		</foreach>
+      </ul>
+    </section>
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="shou"><img src="__DATA__/newstatic/images/shou.png"></span>
+      </a>
+    <!-- /.sidebar -->
+  </aside>
+<div class="left">
+<div class="span"></div>
+<div class="menu" id="menu" data-url="{:U('Index/getParentCate')}">
+<foreach name='menu' key='k' item='v'>
+<div id="items_left_menu_{$k}">
+	<volist name='v["child"]' key='k2' id='v2'>
+	<dl id="dl_items_{$k2}_{$k}" data-cid="{$v2['id']}">
+		<dt>{$v2.name}</dt>
+		<dd>
+		<ul>
+
+      <if condition="$v2['id'] eq 7">
+      <volist name='qmenu' key='k3' id='v3'>
+      <li><a href="{:U($v3['url'])}" target="main">{$v3.name}</a></li>
+      </volist>  
+      <else/>
+      <volist name='v2["child"]' key='k3' id='v3'>
+      <li><a href="{:U($v3['url'])}" target="main">{$v3.name}</a></li>
+      </volist>
+
+      </if>
+		</ul>
+		</dd>
+	</dl>
+	</volist>	
+	
+</div>
+</foreach>
+<!-- Item End -->
+</div>
+</div>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+     <div class="">
+        <div class="">
+          <div class="box">
+            <div class="box-header">
+            <div class="box-body" style="margin-top:0;">
+            	<div class="zhedie">
+                	<volist name='qmenu' key='kt' id='vt'>
+					<a href="{:U($vt['url'])}">{$vt.name}</a>
+					</volist>  
+                  
+                    <i class="fa fa-plus acity" data-toggle="modal" data-target="#modal-default" style="cursor:pointer;"></i>
+                </div>
+                <div class="dwy"><a href="#" style="font-size:16px; color:#333333;"><i class="fa fa-gear"></i> 系统设置</a></div>
+            </div>
+             
+            </div>
+            
+          </div>
+        </div>
+      </div> 
+	   <script src="__DATA__/newstatic/dist/js/jquery-1.11.1.min.js"></script>
+		<!-- Bootstrap 3.3.7 -->
+	  <script src="__DATA__/newstatic/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <!-- 自定义服务js-->
+<script type="text/javascript">
+	var cityId = 0;	
+	$(function(){
+		$('.acity').click(function(){
+			$('.city').show();
+			$('.mask').show();
+		});
+		$('.cityul b').click(function(){
+			var testval = $('#checknav').val();
+			var test=$(this).html();
+			if($(this).attr("city") == undefined){ $(this).attr("city", window.cityId++);}
+			var city = $(this).attr("city");
+			if( $('input[city="'+ city +'"]').size()){
+				
+				$('input[city="'+ city +'"]').parent().remove();
+			} else {
+				var ml=$('.cityshow li').length;
+				if(ml>9){
+					alert('最多只能添加10个');
+				}else{
+					var tt = $(this).parent().attr("data");
+					$('#checknav').val(testval+','+tt);
+					var test=$(this).html();
+					$('<li class="licity"><span  name="citychk" city="'+ city +'" class="check" data="'+
+					tt+'"><b>'+test+'</b><span class="cha">×</span></span></li>').appendTo('.cityshow ul');
+				}
+			}
+			$('span[name=citychk]').click(function(){
+				var testdelval = $('#checknav').val();
+				var tts = $(this).attr("data");
+				$('#checknav').val(testdelval.replace(','+tts, ''));
+				$(this).parent('.licity').remove();
+			});
+		});	
+		$('.ok').click(function(){
+				var total="";
+				if($('.cityshow ul li').text()=='')
+				{
+					$('.city').hide();
+					$('.mask').hide();
+				}else{
+					$('.cityshow ul li').each(function(){
+						total += (total.length > 0 ? "+" : "" ) + $(this).text();
+					});
+					$('.acity').text(total);
+					$('.city').hide();
+					$('.mask').hide();
+				}
+			})
+	})
+	function js_method(){
+		$('#modal-backdrop').hide();
+		$('#modal-default').hide();
+		$('.modal-backdrop').hide();
+		var testval = $('#checknav').val();
+		$.get("admin.php?s=/Index/navedit/", { checknav: testval}, function(result){
+			location=location ;
+		});
+		
+	}
+</script>
+
+<script src="__DATA__/newstatic/dist/js/adminlte.min.js"></script>
+
+	<div  class="right">
+		<div class="rightContent ">
+		<iframe id="main" name="main" frameborder="0" scrolling="yes" src="{:U('Public/main')}" ></iframe>
+		</div>
+	</div> 
+	
+    <!-- Main content -->
+   
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <div class="control-sidebar-bg"></div>
+
+</div>
+<!-- ./wrapper -->
+<!-- jQuery 3 -->
+</body>
+</html>

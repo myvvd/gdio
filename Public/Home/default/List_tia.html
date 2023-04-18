@@ -1,0 +1,189 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <!--由山东网亿网络科技有限公司设计制作,如果您有任何意见或建议请致电0535-6262050-->
+  <title>{$title}-<yang:sitename /></title>
+  <meta name="keywords" content="{$keywords}" />
+  <meta name="description" content="{$description}" />
+  
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/aos.css" />		
+  <link href="__PUBLIC__/3153/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.carousel.css">
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.theme.css">
+
+  <link href="__PUBLIC__/3153/css/style.css" rel="stylesheet" />
+
+  <link href="__PUBLIC__/3153/css/slick.css" type="text/css" rel="stylesheet"/>
+  <link href="__PUBLIC__/3153/css/slick-theme.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<include file="Public:header" />      
+<include file="Public:banner" />   
+
+<div class="content">
+	<div class="container">
+    	<div class="eventz">
+        <div class="events_right">
+        	<ul>
+            	<include file="Public:eventright" />
+            </ul>
+        </div>
+    	<div class="events_left">
+        	<h4 class="eventsub">{$cate.name}</h4>
+            <div class="mtiacont">
+				{$cate.des}
+			</div>
+			
+			 <div class="mtia">
+                      <ul class="tab_menu clearfix">
+						<yang:catlist typeid='10' type='son' flag='1'>
+							<li <if condition='$catlist.id eq 20'>class="current"</if>>
+							   <div class="mtiasub">
+							  <img src="{$catlist.cat_pic}">
+							  </div>
+							</li>
+						</yang:catlist>
+                        
+                      </ul>
+                      <div class="tab_box">
+					  <yang:catlist typeid='10' type='son' flag='1'>
+                         <div <if condition='$catlist.id neq 20'>class="hide"</if>>
+                            <div id="owl-demo" class="owl-carousel owl-theme mtialun">
+								<yang:list typeid="$catlist[id]" limit='10'>
+									<div class="item">
+										<a href="javascript:;"><img src="{$list.litpic}"></a>
+									</div>
+								</yang:list>
+                            </div>
+                            
+                           <div class="clear"></div>
+                         </div>   
+						</yang:catlist>                        
+                    </div>
+                </div>    
+
+			
+			
+        </div>
+        <div class="clear"></div>
+		</div>
+    <div class="clear"></div>
+	</div>    
+    
+    
+    
+</div>
+
+
+
+<include file="Public:footer" />
+ 
+<script type="text/javascript" src="__PUBLIC__/3153/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/script.js'></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/myjquery.js'></script>
+
+<!--event-->
+<script src="__PUBLIC__/3153/js/jquery.tabs.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  $('.mtia').Tabs();
+  })
+</script>
+
+
+<script src="__PUBLIC__/3153/js/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+<script src="__PUBLIC__/3153/js/owl.carousel.js"></script>
+<script>
+$(document).ready(function() {
+      $('.pcbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+	   $('.secbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+	   $('.mtialun').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: false,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+      
+    })
+
+</script>
+
+<script src="__PUBLIC__/3153/js/bootstrap.js" type="text/javascript"></script>
+
+
+</body>
+</html>

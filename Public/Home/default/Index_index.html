@@ -1,0 +1,221 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <!--由山东网亿网络科技有限公司设计制作,如果您有任何意见或建议请致电0535-6262050-->
+  <title><yang:sitetitle/></title>
+  <meta name="keywords" content="<yang:sitekeywords />" />
+  <meta name="description" content="<yang:sitedescription />" />
+  
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/aos.css" />		
+  <link href="__PUBLIC__/3153/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.carousel.css">
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.theme.css">
+
+  <link href="__PUBLIC__/3153/css/style.css" rel="stylesheet" />
+  
+</head>
+
+<body>
+
+<include file="Public:header" />    
+<!-- 手机端导航--结束 -->
+
+<!--轮播部分-->
+<div class="hidden-xs">
+<div id="owl-demo" class="owl-carousel owl-theme pcbanner">
+	<yang:abc id='1' limit='3'>
+		<div class="item">
+			<!--<a href="{$abc.url}"></a>-->
+            <img src="{$abc.content}">
+		</div>
+	</yang:abc>
+    
+</div>
+</div>        
+<div class="owl-carousel owl-theme secbanner visible-xs">   
+	<yang:abc id='2' limit='3'>
+		<div class="item">
+			<img src="{$abc.content}">
+		</div>
+	</yang:abc>
+</div>
+
+
+<div class="content">
+	
+    <div class="container">
+    	<div class="maptu"><img src="__PUBLIC__/3153/images/are.png" class="img-responsive center-block"></div>
+		<h3 class="focussub pt50">News</h3>
+ 		<div class="newlist">
+        	<ul id="container">
+				<yang:list typeid="7" limit="6">
+					<li aos="fade-up">
+						<a href="{$list.url}">
+							<div class="newpic">
+							<img src="{$list.litpic}" alt="{$list.title}">
+							</div>
+							<div class="newmeng">
+								<h3>{$list.title}</h3>
+							</div>
+							<div class="newp">
+								<P>{$list.description}</P>
+								<span>Read More</span>
+							</div>
+						</a>
+					</li>
+				</yang:list>
+          </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="newmore" aos="flip-up"><a href="<yang:type typeid='7'>{$type.url}</yang:type>">SEE MORE</a></div>
+ 
+    </div>
+
+	<div class="container">
+     <h3 class="focussub pt50">HIGHLIGHTS</h3>
+    <div class="caslist">
+        	<ul>
+				<yang:catlist typeid='4' type='son' limit='3'>
+				<li aos="fade-up">
+                	<a href="{$catlist.url}">
+                    	<div class="newpic">
+                        <img src="{$catlist.image}" alt="{$catlist.name}">
+                        </div>
+                        <div class="newmeng2">
+                            <h3>{$catlist.name}</h3>
+                            <span>Read More</span>
+                        </div>
+                    </a>
+                </li>
+				</yang:catlist>
+          </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+	
+    <div class="focusbg">
+    	<div class="container">
+        	<h3 class="focussub">focus</h3>
+            <div class="focuszs">
+            	<div class="row">
+					<yang:catlist typeid='2' type='son' flag='1'>	
+						<div class="col-sm-3 col-xs-6">
+							<span><img src="{$catlist.image}"></span>
+							<div class="focuscont">
+							<h4>{$catlist.name}</h4>
+							<div class="focuswen">
+							{$catlist.des} 
+							</div>
+							</div>
+						</div>
+					</yang:catlist>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mdesign_bg">
+    	<div class="mdesignm">
+        <div class="container">
+        	<h4 aos="zoom-in">Promote the design industry as a powerful engine for economic and social development.</h4>
+			<a href="<yang:type typeid="3">{$type.url}</yang:type>" class="designmore" aos="zoom-in-up">Join us to become a GDIO Member!</a>
+        </div>
+        </div>
+    </div>
+    
+    <div class="container partern">
+    	<h3 class="focussub" aos="fade-up">Partner</h3>
+        <div class="idwek" aos="fade-up">
+        	<ul>
+				<yang:abc id='3' limit='40'>
+				<li>
+                	<!--<a href="{$abc.url}"><img src="{$abc.content}" class="idweks"><img src="{$abc.image}" class="idwekh"></a>-->
+                    <a href="<if condition='empty($abc[url])'>javascript:void(0);<else />{$abc.url}</if>" <if condition='!empty($abc[url])'>target="_blank"</if>><img src="{$abc.content}" class="idweks"><img src="{$abc.image}" class="idwekh"></a>
+                </li>
+				</yang:abc>
+            </ul>
+        </div>
+    	<div class="clear"></div>
+    </div>
+    
+</div>
+
+
+
+<include file="Public:footer" />
+ 
+<script type="text/javascript" src="__PUBLIC__/3153/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/script.js'></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/new.js'></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/myjquery.js'></script>
+
+
+<script src="__PUBLIC__/3153/js/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+<script src="__PUBLIC__/3153/js/owl.carousel.js"></script>
+<script>
+$(document).ready(function() {
+      $('.pcbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+	   $('.secbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+    })
+
+</script>
+
+<script src="__PUBLIC__/3153/js/bootstrap.js" type="text/javascript"></script>
+
+
+</body>
+</html>

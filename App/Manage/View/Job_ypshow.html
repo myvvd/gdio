@@ -1,0 +1,89 @@
+<extend name="Public:base" />
+<block name="header_js">
+<script type="text/javascript" src="__PUBLIC__/js/calendar.config.js"></script>
+
+
+
+</block>
+
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header"><em class="glyphicon glyphicon-cloud-upload"></em> 
+			应聘个人信息展示
+		    </h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('add')}">	
+					<div class="form-group">
+						<label for="inputzhiwei" class="col-sm-2 control-label">职位名称</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.zhiwei}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputrenshu" class="col-sm-2 control-label">姓名</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.name}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputbumen" class="col-sm-2 control-label">性别</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							<if condition="$data.sex eq 1">男<elseif condition="$data.sex eq 0"/>女</if>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputdiqu" class="col-sm-2 control-label">年龄</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.age}
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputxueli" class="col-sm-2 control-label">学历</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.xueli}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputxingzhi" class="col-sm-2 control-label">电话</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.tel}
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputgongling" class="col-sm-2 control-label">邮箱</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.email}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputendtime" class="col-sm-2 control-label">工作经验</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.gongling}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputContent" class="col-sm-2 control-label">自我评价</label>
+						<div class="col-sm-9" style="margin-top:6px;">
+							{$data.content}					
+						</div>
+					</div>
+					<div class="row margin-botton-large">
+						<div class="col-sm-offset-2 col-sm-9">
+							<div class="btn-group">							
+								
+								<button type="button" onclick="goUrl('{:U('yingpin')}')" class="btn btn-default"> <i class="glyphicon glyphicon-chevron-left"></i>
+									返回
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+		</div>
+	</div>
+</block>

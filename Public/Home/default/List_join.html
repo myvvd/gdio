@@ -1,0 +1,240 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <!--由山东网亿网络科技有限公司设计制作,如果您有任何意见或建议请致电0535-6262050-->
+  <title>{$title}-<yang:sitename /></title>
+  <meta name="keywords" content="{$keywords}" />
+  <meta name="description" content="{$description}" />
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/aos.css" />		
+  <link href="__PUBLIC__/3153/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.carousel.css">
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/owl.theme.css">
+  <link href="__PUBLIC__/3153/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="__PUBLIC__/3153/css/bootstrap-select.css">
+  <link href="__PUBLIC__/3153/css/style.css" rel="stylesheet" />
+  <link href="__PUBLIC__/3153/css/slick.css" type="text/css" rel="stylesheet"/>
+  <link href="__PUBLIC__/3153/css/slick-theme.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<include file="Public:header" />  
+
+<!--banner-->
+<div class="sbanner">
+	 <img src="{$pid_cate.cat_pic}" class="hidden-xs">
+     <img src="{$pid_cate.image}" class="visible-xs">
+</div>        
+
+
+
+<div class="content">
+	<div class="container">
+         <div class="join">
+             <h2 class="stitle">join us</h2> 
+             <p>In this respect, the conference advocates that international organizations, national governments, global design industries, and various industrial fields shall unite to promote the design industry as a powerful engine for economic and social development. Fully utilize and exert creativity, value, and leadership of design innovation, to increase industrial value, to cultivate industrial vitality, to spur industrial upgrading, and to shape future industrial structure. We pledge to build a global design industry organization, to revitalize the industry and create a better life, to promote prosperity and protect the earth. Together we will make our contributions to achieving high-quality, sustainable development!</p>
+         </div>
+         <div class="joinput clearfix">
+             <form method='post' id="form_do" name="form_do" action="<yang:gbookaddurl />"  onsubmit="return checkesub()">
+                 <div class="parts clearfix">
+                     <input type="text" placeholder="First Name" name="username" id="name"> <!--原 Name 改成了FirstName-->  
+					 <input class="partright" type="text" placeholder="Family Name" name="qq" id="qq" style="float: right;">  <!--原 IM 改成了FamilyName-->                   
+                 </div>
+                 <div class="parts clearfix">
+					<select name="gender" id="gender" style="float: none;"> 
+						 <option value="">Gender</option>
+                         <option value="Male">Male</option>
+                         <option value="Female">Female</option>                      
+                     </select>
+					 <input class="partright" type="text" id="email" placeholder="Email" name="email" style="float: right;">                     
+                 </div>
+                 
+                 <div class="parts clearfix">
+					<div class="rightpart" style="float: left;">
+                     <select id="state" name="state" class="selectpicker countrypicker" data-live-search="true" data-default="China" data-flag="true"></select>
+					 </div>
+					 <input  class="partright" type="text" placeholder="Organization" name="organization" id="organization" style="float: right;"> 
+                 </div>
+                 <div class="parts clearfix">
+					<input type="text" placeholder="Organization Website" name="government" id="government">  <!--原Do you have a position in the government? 改 Organization Website-->
+					<input class="partright" type="text" placeholder="Position" name="position" id="position" style="float: right;"> 
+                 </div>
+                 
+                 <div class="parts clearfix">
+				 <input type="text" placeholder="What is the business scope of your organization?" name="business" id="business">                 
+                 <input class="partright" type="text" placeholder="Which field of design are you engaged in?" name="engaged" id="engaged" style="float: right;">
+                 </div>
+                 
+                 <div class="parts clearfix">
+					<input type="text" id="tel" placeholder="Cell Phone" name="tel">
+					<input class="partright" type="text" placeholder="LinkedIn ID" name="content" id="content" style="float: right;"> <!--原 content 改 LinkedIn ID-->                    
+                 </div>
+                 <div class="part clearfix">
+					 <div class="partleft">
+                          <input type="text" placeholder="Verification code" name="code" id="code">  
+                          <input type="button" id="btn" value="Send email verification" onclick="settime(this)"/>
+                      </div>
+                      
+                 </div>
+                 
+                 <label><input type="checkbox" id="is_personal" name="is_personal" value="1">  On behalf of my individual, I intend to become the Member of the Global Design Industry Organization.</label>
+                 <label><input type="checkbox" id="is_org" name="is_org" value="1">  On behalf of my organization, we intend to become the Member of the Global Design Industry Organization.</label>
+                 
+                 <button type="submit" class="tijiao">register</button>
+             </form>
+         </div>
+	</div>    
+    
+    
+    
+</div>
+<include file="Public:footer" />
+<script type="text/javascript" src="__PUBLIC__/3153/js/jquery-1.11.0.min.js"></script>
+<script src="__PUBLIC__/3153/js/bootstrap-select.min.js"></script>
+<script src="__PUBLIC__/3153/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/3153/js/countrypicker.min.js"></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/script.js'></script>
+<script type="text/javascript" src='__PUBLIC__/3153/js/myjquery.js'></script>
+
+             <script type="text/javascript">
+			    var countdown=60; 
+				var t;
+				function settime(val) {
+					if(countdown==60){
+						var email = $("#email").val();
+						var flag  =	checkEmail(email);
+
+						if(flag){
+							sendCode2();
+						}else{
+							alert("Please enter the correct email address");
+							return false;
+						}
+						
+						
+					}
+					//var email = $("#email").val();
+					if (countdown == 0) { 
+						val.removeAttribute("disabled");    
+						val.value="Send email verification"; 
+						countdown = 60; 
+						clearTimeout(t);
+						return;
+					} else { 
+						val.setAttribute("disabled", true); 
+						val.value="Resend (" + countdown + ")"; 
+						countdown--; 
+					} 
+					t = setTimeout(function() { 
+						settime(val) 
+					},1000); 
+				} 
+
+				function sendCode2(){
+					var email = $("#email").val();
+					$.ajax({
+						type:"post",
+						url:"{:U('Public/sendCode2')}",
+						async:true,
+						data:{email,email},
+						success:function (data) {
+							
+						}
+					});
+				}
+
+				function checkesub(){
+					var name = $("#name").val();
+					var qq = $("#qq").val();
+					var email = $("#email").val();
+					var gender = $("#gender").val();
+					var organization = $("#organization").val();
+					var position = $("#position").val();
+					var content = $("#content").val();
+					var state = $("#state").val();
+					var engaged = $("#engaged").val();
+					var code = $("#code").val();
+					var government = $("#government").val();
+					var business = $("#business").val();
+					var msg = '';
+
+					if(name.length == 0){
+						msg +='Please enter "First Name"\n';
+					}
+
+					if(qq.length == 0){
+						msg +='Please enter "Family Name"\n';
+					}
+
+					if(gender.length == 0){
+						msg +='Please select your gender\n';
+					}
+					if(organization.length == 0){
+						msg +='Please enter organization\n';
+					}
+					if(content.length == 0){
+						//msg +='Please enter "LinkedIn ID"\n';
+					}
+					if(email.length == 0){
+						msg +='Please enter email address\n';
+					}else{
+						var partten = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+						var youxiang = partten.test(email);
+						if(!youxiang){  
+							msg +='Please enter the correct email address\n';
+						}
+					}
+					if(position.length == 0){
+						msg +='Please enter position\n';
+					}
+					if(state.length == 0){
+						msg +='Please enter state\n';
+					}
+					if(engaged.length == 0){
+						msg +='Please enter "Which field of design are you engaged in?"\n';
+					}
+					if(government.length == 0){
+						//msg +='Please enter "Organization Website"\n';
+					}
+					if(business.length == 0){
+						msg +='Please enter "What is the business scope of your organization?"\n';
+					}
+					if(code.length == 0){
+						msg +='Please enter code\n';
+					}
+					
+					if(!$('#is_personal').is(":checked") && !$('#is_org').is(":checked")){
+						msg += 'Please select "On behalf of my individual, I intend to become the Member of the Global Design Industry Organization." or "On behalf of my organization, we intend to become the Member of the Global Design Industry Organization."。';
+					}
+					if (msg.length > 0){
+						alert(msg);
+						return false;
+					}
+					return true;
+				  }
+				
+				function checkEmail(email){
+					var partten = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)/;
+					var youxiang = partten.test(email);
+					if(!youxiang){  
+						return false;
+					}else{
+						return true;
+					}
+				}
+			 </script>
+ 
+<script src="__PUBLIC__/3153/js/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+
+
+
+</body>
+</html>

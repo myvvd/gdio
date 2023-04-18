@@ -1,0 +1,364 @@
+<extend name="Public:base" />
+
+<block name="content">
+<!-- Font Awesome -->
+</style>
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/font-awesome/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/Ionicons/css/ionicons.min.css">
+<!-- Morris charts -->
+<link rel="stylesheet" href="__DATA__/newstatic/bower_components/morris.js/morris.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/AdminLTE.min.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+   folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="__DATA__/newstatic/dist/css/style.css">
+ <section class="content-header">
+      <h4 style="color:#8e8e8e;">
+        欢迎，{$Think.session.yang_adm_username} &nbsp;&nbsp;<small><img src="__DATA__/newstatic/images/ren.png" style="vertical-align: inherit"></small>
+      </h4>
+    </section>
+	<section class="content">
+	<div class="row msi">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-chrome"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">网站运行：<i class="lan16" id="txts"></i> 天</span>
+			<script type="text/javascript">
+			var time = (new Date("2020/05/15")).getTime(); 
+			var MinMilli = 1000 * 60;
+			var HrMilli = MinMilli * 60;
+			var DyMilli = HrMilli * 24;
+			//alert(time);
+			function tm(time){
+
+				date1 = new Date();
+				time2 = date1.getTime();
+
+				secd = Math.floor((time2-time)/1000%60);
+				minis = Math.floor((time2-time)/MinMilli%60);
+				hors = Math.floor((time2-time)/HrMilli%24);
+				dt = Math.floor((time2-time)/DyMilli);
+				
+				document.getElementById('txts').innerHTML= dt;
+			}
+			setInterval('tm('+time+')',1000);
+			</script>
+              <span class="info-box-text">服务到期：<small class="lan16">2023.05.15</small>&nbsp;<a href="http://www.w-e.cc/lx/17/1.html" target="_blank" class="xufei">续费</a></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-google-plus"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">今日浏览：<i class="lan16">{$ip_arr.0.num}</i> 次</span>
+              <span class="info-box-text">累计浏览：<i class="lan16">{$totalnum}</i> 次</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-ios-cart-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">询盘：<i class="lan16">{$count}</i> 条未读</span>
+              <span class="info-box-text">会员：<i class="lan16">{$usercount}</i> 人</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">栏目：<i class="lan16">56</i> 个</span>
+              <span class="info-box-text">未支付订单：<i class="lan16">56</i> 个</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <div class="col-md-9">
+          <!-- MAP & BOX PANE -->
+          <div class="box mb20">
+            <div class="box-header with-border">
+              <h3 class="box-title">访问概况</h3>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart" style="height: 440px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- 快捷栏目 开始 -->
+          <div class="box mb20">
+            <div class="box-header with-border">
+              <h3 class="box-title">快捷栏目</h3>
+            </div>
+			<div class="jkkuang">
+            	<div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa  fa-cubes"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 栏目管理<a href="{:U('Category/add')}" class="kjlan right">添加栏目</a>
+          		  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa fa-calendar-o"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 招聘管理<a href="{:U('Job/add')}" class="kjlan right">添加职位</a>
+          		  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa fa-newspaper-o"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 留言本<a href="{:U('Guestbook/index')}" class="kjlan right">留言本管理</a>
+          		  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa fa-hospital-o"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 网站设置<a href="{:U('System/site')}" class="kjlan right">网站设置</a>
+          		  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa fa-diamond"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 缓存<a href="{:U('System/clearCache')}" class="kjlan right">清除系统缓存</a>
+          		  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mb20">
+                	<span class="info-box-kj"><i class="fa fa-video-camera"></i></span>
+                    <div class="info-box-kjcont kjhei">
+            			 广告<a href="{:U('System/add')}" class="kjlan right">添加广告</a>
+          		  </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>            
+          </div>
+           <!-- 快捷栏目结束 -->
+           <!-- 安全防护 开始 -->
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">安全防护</h3>
+            </div>
+			<div class="jkkuang2">
+                <span>网络安全 <em>0</em> <i class="font14">件</i></span>
+                <span>网络服务器安全安全 <em>0</em> <i class="font14">件</i></span>
+                <span>安全检测 <em>0</em> <i class="font14">件</i></span>
+                <div class="clearfix"></div>
+            </div>            
+           
+          </div>
+           <!-- 安全防护 结束 -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3">
+           <!-- 安全防护 开始 -->
+          <div class="box mb20">
+            <div class="box-header with-border">
+              <h3 class="box-title">网站空间</h3>
+              <a href="#" class="right fontl14">查看更多</a>
+            </div>
+			  <!-- Donut chart -->
+            <div class="box-body">
+              <div id="donut-chart" style="height: 267px;"></div>
+            </div>
+            <div class="box-header with-border">
+              <div class="w80">
+             	 <div class="box-sy"><i class="huiq"></i>网站使用空间：{$size.cx3}%</div>
+              	<div class="box-sy"><i class="lanq"></i>网站剩余空间：{$size.up3}%</div>
+              	<div class="box-sy"><i class="lank"></i>网站空间：1G</div>
+             </div>
+            </div>
+            <!-- /.box-body-->
+          </div>
+           <!-- 安全防护 结束 -->
+          <!-- 功能推荐 开始 -->
+          <div class="box mb20 pb40">
+          	<div class="box-header with-border">
+              <h3 class="box-title">功能推荐</h3>
+              <a href="http://www.w-e.cc/fuwu/1/1.html#1" class="right fontl14">查看更多</a>
+            </div>
+			<?php $i=1;?>
+			<foreach name='yxrow' item='vs'>	
+            <div class="gntj">
+            	<h4 class="font16">{$vs.title}</h4>
+                <p>{$vs.destion}</p>
+                <div class="dingg">
+                	<a href="{$vs.url}" class="alank">在线订购</a>
+                    <a href="{$vs.url}" class="right"><img src="__DATA__/newstatic/dist/img/cpshu.png"></a>
+                </div>
+            </div>
+            <?php $i++;?>	</foreach>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+	  <script src="__DATA__/newstatic/dist/js/jquery-1.11.1.min.js"></script>
+		<!-- Bootstrap 3.3.7 -->
+	  <script src="__DATA__/newstatic/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <!-- 自定义服务js-->
+<script type="text/javascript">
+	var cityId = 0;	
+	$(function(){
+		$('.acity').click(function(){
+			$('.city').show();
+			$('.mask').show();
+		});
+		$('.cityul b').click(function(){
+			var test=$(this).html();
+		
+			if($(this).attr("city") == undefined){ $(this).attr("city", window.cityId++);}
+			var city = $(this).attr("city");
+			if( $('input[city="'+ city +'"]').size()){
+				$('input[city="'+ city +'"]').parent().remove();
+			} else {
+				var ml=$('.cityshow li').length;
+				if(ml>9){
+					alert('最多只能添加10个');
+				}else{
+					var test=$(this).html();
+					$('<li class="licity"><span  name="citychk" city="'+ city +'" class="check"><b>'+test+'</b><span class="cha">×</span></span></li>').appendTo('.cityshow ul');
+				}
+			}
+			
+			$('span[name=citychk]').click(function(){
+				$(this).parent('.licity').remove();
+			});
+			
+		});	
+		$('.ok').click(function(){
+				
+				var total="";
+				if($('.cityshow ul li').text()=='')
+				{
+					$('.city').hide();
+					$('.mask').hide();
+				}else{
+					$('.cityshow ul li').each(function(){
+						total += (total.length > 0 ? "+" : "" ) + $(this).text();
+					});
+					$('.acity').text(total);
+					$('.city').hide();
+					$('.mask').hide();
+				}				
+			})
+	})
+</script>
+<!-- Morris.js charts -->
+<script src="__DATA__/newstatic/bower_components/raphael/raphael.min.js"></script>
+<script src="__DATA__/newstatic/bower_components/morris.js/morris.min.js"></script>
+<!-- FastClick -->
+<script src="__DATA__/newstatic/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="__DATA__/newstatic/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="__DATA__/newstatic/dist/js/demo.js"></script>
+<!-- page script -->
+<!-- 首页 两个图表用 -->
+<script src="__DATA__/newstatic/bower_components/Flot/jquery.flot.js"></script>
+<script src="__DATA__/newstatic/bower_components/Flot/jquery.flot.pie.js"></script>
+<script>
+  $(function () {
+    "use strict";
+    //BAR CHART
+    var bar = new Morris.Bar({
+      element: 'bar-chart',
+      resize: true,
+      data: [
+		{y: '{$ip_arr.14.datet}', a: {$ip_arr.14.num}},
+		{y: '{$ip_arr.13.datet}', a: {$ip_arr.13.num}},
+		{y: '{$ip_arr.12.datet}', a: {$ip_arr.12.num}},
+		{y: '{$ip_arr.11.datet}', a: {$ip_arr.11.num}},
+		{y: '{$ip_arr.10.datet}', a: {$ip_arr.10.num}},
+		{y: '{$ip_arr.9.datet}', a: {$ip_arr.9.num}},
+		{y: '{$ip_arr.8.datet}', a: {$ip_arr.8.num}},
+		{y: '{$ip_arr.7.datet}', a: {$ip_arr.7.num}},
+		{y: '{$ip_arr.6.datet}', a: {$ip_arr.6.num}},
+		{y: '{$ip_arr.5.datet}', a: {$ip_arr.5.num}},
+		{y: '{$ip_arr.4.datet}', a: {$ip_arr.4.num}},
+		{y: '{$ip_arr.3.datet}', a: {$ip_arr.3.num}},
+		{y: '{$ip_arr.2.datet}', a: {$ip_arr.2.num}},
+		{y: '{$ip_arr.1.datet}', a: {$ip_arr.1.num}},
+		{y: '{$ip_arr.0.datet}', a: {$ip_arr.0.num}}
+      ],
+      barColors: ['#f56954', '#0089F0'],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['IP'],
+      hideHover: 'auto'
+    });
+  });
+</script>
+<script>
+  $(function () {
+    /*
+     * Flot Interactive Chart
+     * -----------------------
+     */
+    // We use an inline data source in the example, usually data would
+    // be fetched from a server
+    
+    /*
+     * DONUT CHART
+     * -----------
+     */
+	var tat = {$size.cx3};
+	var tatrr = {$size.up3};
+    var donutData = [
+      { label: '使用空间', data: tat, color: '#F4F4FE' },
+      { label: '剩余空间', data: tatrr, color: '#0089F0' },
+    ]
+    $.plot('#donut-chart', donutData, {
+      series: {
+        pie: {
+          show       : true,
+          radius     : 1,
+          innerRadius: 0.5,
+          label      : {
+            show     : true,
+            radius   : 2 / 3,
+            formatter: labelFormatter,
+            threshold: 0.1
+          }
+
+        }
+      },
+      legend: {
+        show: false
+      }
+    })
+    /*
+     * END DONUT CHART
+     */
+  })
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+  function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #333; font-weight: 500;">'
+      + label
+      + '<br>'
+      + Math.round(series.percent) + '%</div>'
+  }
+</script>
+</section>
+</block>

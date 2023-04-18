@@ -1,0 +1,128 @@
+<extend name="Public:base" />
+<block name="header_js">
+<script type="text/javascript" src="__PUBLIC__/js/calendar.config.js"></script>
+<script type="text/javascript" src="__DATA__/editor/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__DATA__/editor/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+$(function(){
+    var ue = UE.getEditor('inputReply',{
+        serverUrl :"{:U('Public/editorMethod')}"
+    });
+})
+</script>
+
+</block>
+
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header"><em class="glyphicon glyphicon-cloud-upload"></em> 
+			查看留言
+		    </h3>
+		</div>
+		
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('reply')}">	
+					<div class="form-group">
+						<label for="inputName" class="col-sm-2 control-label">FirstName</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.username}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label">FamilyName</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.qq}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputName" class="col-sm-2 control-label">gender</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.gender}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.email}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputUsername" class="col-sm-2 control-label">state</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.state}</p>					
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputUsername" class="col-sm-2 control-label">organization</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.organization}</p>					
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label"> Organization Website</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.government}</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputUsername" class="col-sm-2 control-label">Position</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.position}</p>					
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label"> What is the business scope of your organization?</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.business}</p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label"> Which field of design are you engaged in?</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.engaged}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label">Cell Phone</label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.tel}</p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label">LinkedIn ID </label>
+						<div class="col-sm-9">
+							<p class="form-control-static">{$vo.content}</p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label"> On behalf of my individual, I intend to become the Council Member of the Global Industry Design Organization.</label>
+						<div class="col-sm-9">
+							<p class="form-control-static"><if condition='$vo.is_personal'>YES<else/>NO</if></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEname" class="col-sm-2 control-label"> On behalf of my organization, we intend to become the Council Member of the Global Industry Design Organization.</label>
+						<div class="col-sm-9">
+							<p class="form-control-static"><if condition='$vo.is_org'>YES<else/>NO</if></p>
+						</div>
+					</div>
+					
+				</form>
+	
+		</div>
+	</div>
+
+		
+
+
+</block>

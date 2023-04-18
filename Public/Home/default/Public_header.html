@@ -1,0 +1,102 @@
+<!-- 导航条 -->
+<header class="head">
+<div class="masthead-bar">
+	<div class="container">
+    	<div class="searchz">
+        <button id="toggle-search" class="header-button">serch</button>
+        <form id="search-form" name="SearchForm" method="post" action="<yang:searchurl />">
+              <fieldset>
+                  <input name="keyword" class="search-terms" type="text" placeholder="search">
+              </fieldset>
+              <input type="submit" value="GO" class="">
+          </form>
+       </div>   
+       <div class="login"><i></i></div>
+        <div class="heatoplink">
+		<yang:navlist typeid='0'>
+		<if condition='$navlist.id elt 3'>
+		<a href="{$navlist.url}" <if condition='$pid_cate[id] eq $navlist[id]'>class="on"</if>>{$navlist.name}</a>
+		</if>
+		</yang:navlist>
+    	</div>
+        <div class="search">
+        
+        </div>
+    </div>
+</div>
+<div class="masthead">
+  <div class="container">
+	 <div class="masthead-nav-logo"><h1><a href="<yang:siteurl />"><img src="__PUBLIC__/3153/images/logo.png" alt="" title=""></a></h1></div>
+     <div class="nav headrg">
+		<ul class="nav_pc">
+			<yang:navlist typeid='0'>
+			<if condition='$navlist.id gt 3'>				
+			<li <if condition='$pid_cate[id] eq $navlist[id]'>class="on"</if>>
+				  <a class="f_a" href="{$navlist.url}">{$navlist.name}</a>
+				  <notempty name="navlist['child']">
+
+					<div class="s_navbox">
+					 <div class="s_a">
+						<volist name="navlist['child']" id="vo">
+							<a href='{$vo|get_url}'>{$vo.name}</a>
+						</volist>
+						
+					 </div>
+				  </div>
+				</notempty>				 
+			</li>
+			</if>
+			</yang:navlist>
+		  
+		</ul>
+	 </div>
+  </div>
+</div>
+</header>
+<!-- 手机端导航--开始 -->
+<div class="m_img">
+<div class="container"><div class="heatoplink">
+		<yang:navlist typeid='0'>
+		<if condition='$navlist.id elt 3'>
+		<a href="{$navlist.url}" <if condition='$pid_cate[id] eq $navlist[id]'>class="on"</if>>{$navlist.name}</a>
+		</if>
+		</yang:navlist>
+    	</div></div>
+  <div class="headlf">
+	 <a href="<yang:siteurl />"> <img class="m_logo" src="__PUBLIC__/3153/images/logo.png" /></a>
+  </div>
+  <div class="headrg">
+	 <a href="javascript:;" class="a_js"> <img class="m_menuimg" src="__PUBLIC__/3153/images/m_menuimg.png" /></a>
+  </div>
+</div>
+<div class="m_nav">
+  <div class="closecover a_closed"></div>
+  <div class="closeicon">
+	 <a href="javascript:;" class="a_closed"> <img src="__PUBLIC__/3153/images/close.png" width="22" /></a>
+  </div>
+  <div class="m_navList">
+	 <ul>
+		<yang:navlist typeid='0'>
+			<if condition='$navlist.id gt 3'>				
+			
+				<li> 
+				   <div class="m_f_a">
+					  <a href="{$navlist.url}">{$navlist.name}</a>
+					  <i></i>
+				   </div>
+				   <notempty name="navlist['child']">
+					  <div class="m_s_nav">
+						  <volist name="navlist['child']" id="vo">
+								<a href='{$vo|get_url}'>{$vo.name}</a>
+						</volist>
+					   </div>
+					</notempty>
+				   
+				</li>
+
+			</if>
+		</yang:navlist>        		
+	 </ul>
+  </div>
+</div>
+<!-- 手机端导航--结束 -->
