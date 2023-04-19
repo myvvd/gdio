@@ -7,7 +7,6 @@ use Common\Lib\Category;
 class ListController extends HomeCommonController {
 
 	public function index() {
-
 		$cid   = I('cid', 0, 'intval');
 		$ename = I('e', '', 'htmlspecialchars,trim');
 

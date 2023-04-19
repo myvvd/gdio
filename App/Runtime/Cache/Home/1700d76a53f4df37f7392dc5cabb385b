@@ -1,0 +1,160 @@
+<?php if (!defined('THINK_PATH')) exit();?>  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <!--由山东网亿网络科技有限公司设计制作,如果您有任何意见或建议请致电0535-6262050-->
+  <title><?php echo ($title); ?>-WIDA</title>
+  <meta name="keywords" content="<?php echo ($keywords); ?>" />
+  <meta name="description" content="<?php echo ($description); ?>" />
+  
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/aos.css" />		
+  <link href="/Public/Home/default/3153/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/owl.carousel.css">
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/owl.theme.css">
+
+  <link href="/Public/Home/default/3153/css/style.css" rel="stylesheet" />
+
+  <link href="/Public/Home/default/3153/css/slick.css" type="text/css" rel="stylesheet"/>
+  <link href="/Public/Home/default/3153/css/slick-theme.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<!-- 导航条 -->
+<header class="head">
+<div class="masthead-bar">
+	<div class="container">
+    	<div class="searchz">
+        <button id="toggle-search" class="header-button">搜索</button>
+        <form id="search-form" name="SearchForm" method="post" action="/index.php/Search/index.html">
+              <fieldset>
+                  <input name="keyword" class="search-terms" type="text" placeholder="search">
+              </fieldset>
+              <input type="submit" value="GO" class="">
+          </form>
+       </div>   
+       <div class="login"><i></i></div>
+        <div class="heatoplink">
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] <= 3): ?><a href="<?php echo ($navlist["url"]); ?>" <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>><?php echo ($navlist["name"]); ?></a><?php endif; endforeach;?>
+    	</div>
+        <div class="search">
+        
+        </div>
+    </div>
+</div>
+<div class="masthead">
+  <div class="container">
+	 <div class="masthead-nav-logo"><h1><a href="/Home/Index/index"><img src="/Public/Home/default/3153/images/logo2.png" alt="" title=""></a></h1></div>
+     <div class="nav headrg">
+		<ul class="nav_pc">
+			<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] > 3): ?><li <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>>
+				  <a class="f_a" href="<?php echo ($navlist["url"]); ?>"><?php echo ($navlist["name"]); ?></a>
+				  <?php if(!empty($navlist['child'])): ?><div class="s_navbox">
+					 <div class="s_a">
+						<?php if(is_array($navlist['child'])): $i = 0; $__LIST__ = $navlist['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='<?php echo (get_url($vo)); ?>'><?php echo ($vo["name"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+						
+					 </div>
+				  </div><?php endif; ?>				 
+			</li><?php endif; endforeach;?>
+		  
+		</ul>
+	 </div>
+  </div>
+</div>
+</header>
+<!-- 手机端导航--开始 -->
+<div class="m_img">
+<div class="container"><div class="heatoplink">
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] <= 3): ?><a href="<?php echo ($navlist["url"]); ?>" <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>><?php echo ($navlist["name"]); ?></a><?php endif; endforeach;?>
+    	</div></div>
+  <div class="headlf">
+	 <a href="http://www.gdio.org/"> <img class="m_logo" src="/Public/Home/default/3153/images/logo.png" /></a>
+  </div>
+  <div class="headrg">
+	 <a href="javascript:;" class="a_js"> <img class="m_menuimg" src="/Public/Home/default/3153/images/m_menuimg.png" /></a>
+  </div>
+</div>
+<div class="m_nav">
+  <div class="closecover a_closed"></div>
+  <div class="closeicon">
+	 <a href="javascript:;" class="a_closed"> <img src="/Public/Home/default/3153/images/close.png" width="22" /></a>
+  </div>
+  <div class="m_navList">
+	 <ul>
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] > 3): ?><li> 
+				   <div class="m_f_a">
+					  <a href="<?php echo ($navlist["url"]); ?>"><?php echo ($navlist["name"]); ?></a>
+					  <i></i>
+				   </div>
+				   <?php if(!empty($navlist['child'])): ?><div class="m_s_nav">
+						  <?php if(is_array($navlist['child'])): $i = 0; $__LIST__ = $navlist['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='<?php echo (get_url($vo)); ?>'><?php echo ($vo["name"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+					   </div><?php endif; ?>
+				   
+				</li><?php endif; endforeach;?>        		
+	 </ul>
+  </div>
+</div>
+<!-- 手机端导航--结束 -->    
+
+<!--banner-->
+<!--banner-->
+<div class="aboutimg" style="background:url(<?php echo ($pid_cate["cat_pic"]); ?>) no-repeat center; background-size:cover;">
+	<div class="container">
+        <h2>关于我们</h2>
+        <a href="#vision">行业背景</a><a href="#gdio">学会性质</a><a href="#design">学会宗旨</a>
+    </div>
+</div>       
+
+
+
+<div class="content">
+	<?php echo ($cate["content"]); ?>
+</div>
+
+<div class="rightnav">
+	<div class="contact hidden-xs"><i></i><span>+86-535-8209019</span></div>
+    <div class="back-top"><i class="glyphicon glyphicon-arrow-up"></i></div>
+</div>
+<footer>
+	<div class="container">
+    <div class="footnav">	
+	<a href="<?php
+ $_typeid = intval('1'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于</a>
+	<a href="<?php
+ $_typeid = intval('8'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于 WIDAC</a>
+	<a href="<?php
+ $_typeid = intval('6'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">资源</a>
+	<a href="<?php
+ $_typeid = intval('9'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于 IDWE</a>
+	<a href="<?php
+ $_typeid = intval('3'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">加入WIDA</a>
+	</div>
+    <div class="footcopy">Copyright 2020 Global Design Industry Organization&nbsp;&nbsp;<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278909326'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1278909326%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>Email: <?php echo C('CFG_EMAIL');?>&nbsp;&nbsp;Address: 30F, East Tower, Chuangye Building, 69 Keji Avenue, High-tech Zone, Yantai, Shandong</div>
+    </div>
+</footer>    
+<script type="text/javascript" src="/Public/Home/default/3153/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src='/Public/Home/default/3153/js/script.js'></script>
+<script type="text/javascript" src='/Public/Home/default/3153/js/myjquery.js'></script> 
+<script src="/Public/Home/default/3153/js/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+<script src="/Public/Home/default/3153/js/owl.carousel.js"></script>
+ 
+
+<script src="/Public/Home/default/3153/js/bootstrap.js" type="text/javascript"></script>
+
+
+</body>
+</html>

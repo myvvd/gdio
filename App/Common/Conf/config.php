@@ -16,7 +16,7 @@ return array(
 	//'URL_HTML_SUFFIX' => '',
 	'TMPL_STRIP_SPACE'     => false, //是否去除模板文件里面的html空格与换行
 	'TMPL_TEMPLATE_SUFFIX' => '.html', //模板后缀
-
+    'clear_temp'   => true,
 	//显示页面调试信息
 	'SHOW_PAGE_TRACE'      => false,
 

@@ -1,0 +1,344 @@
+<?php if (!defined('THINK_PATH')) exit();?>  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <!--由山东网亿网络科技有限公司设计制作,如果您有任何意见或建议请致电0535-6262050-->
+  <title><?php echo ($title); ?>-WIDA</title>
+  <meta name="keywords" content="<?php echo ($keywords); ?>" />
+  <meta name="description" content="<?php echo ($description); ?>" />
+  
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/aos.css" />		
+  <link href="/Public/Home/default/3153/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/owl.carousel.css">
+  <link rel="stylesheet" href="/Public/Home/default/3153/css/owl.theme.css">
+
+  <link href="/Public/Home/default/3153/css/style.css" rel="stylesheet" />
+
+  <link href="/Public/Home/default/3153/css/slick.css" type="text/css" rel="stylesheet"/>
+  <link href="/Public/Home/default/3153/css/slick-theme.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<!-- 导航条 -->
+<header class="head">
+<div class="masthead-bar">
+	<div class="container">
+    	<div class="searchz">
+        <button id="toggle-search" class="header-button">搜索</button>
+        <form id="search-form" name="SearchForm" method="post" action="/index.php/Search/index.html">
+              <fieldset>
+                  <input name="keyword" class="search-terms" type="text" placeholder="search">
+              </fieldset>
+              <input type="submit" value="GO" class="">
+          </form>
+       </div>   
+       <div class="login"><i></i></div>
+        <div class="heatoplink">
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] <= 3): ?><a href="<?php echo ($navlist["url"]); ?>" <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>><?php echo ($navlist["name"]); ?></a><?php endif; endforeach;?>
+    	</div>
+        <div class="search">
+        
+        </div>
+    </div>
+</div>
+<div class="masthead">
+  <div class="container">
+	 <div class="masthead-nav-logo"><h1><a href="/Home/Index/index"><img src="/Public/Home/default/3153/images/logo2.png" alt="" title=""></a></h1></div>
+     <div class="nav headrg">
+		<ul class="nav_pc">
+			<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] > 3): ?><li <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>>
+				  <a class="f_a" href="<?php echo ($navlist["url"]); ?>"><?php echo ($navlist["name"]); ?></a>
+				  <?php if(!empty($navlist['child'])): ?><div class="s_navbox">
+					 <div class="s_a">
+						<?php if(is_array($navlist['child'])): $i = 0; $__LIST__ = $navlist['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='<?php echo (get_url($vo)); ?>'><?php echo ($vo["name"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+						
+					 </div>
+				  </div><?php endif; ?>				 
+			</li><?php endif; endforeach;?>
+		  
+		</ul>
+	 </div>
+  </div>
+</div>
+</header>
+<!-- 手机端导航--开始 -->
+<div class="m_img">
+<div class="container"><div class="heatoplink">
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] <= 3): ?><a href="<?php echo ($navlist["url"]); ?>" <?php if($pid_cate[id] == $navlist[id]): ?>class="on"<?php endif; ?>><?php echo ($navlist["name"]); ?></a><?php endif; endforeach;?>
+    	</div></div>
+  <div class="headlf">
+	 <a href="http://www.gdio.org/"> <img class="m_logo" src="/Public/Home/default/3153/images/logo.png" /></a>
+  </div>
+  <div class="headrg">
+	 <a href="javascript:;" class="a_js"> <img class="m_menuimg" src="/Public/Home/default/3153/images/m_menuimg.png" /></a>
+  </div>
+</div>
+<div class="m_nav">
+  <div class="closecover a_closed"></div>
+  <div class="closeicon">
+	 <a href="javascript:;" class="a_closed"> <img src="/Public/Home/default/3153/images/close.png" width="22" /></a>
+  </div>
+  <div class="m_navList">
+	 <ul>
+		<?php
+ $_typeid = intval('0'); if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_navlist = get_category(1); if($_typeid == 0) { $_navlist = \Common\Lib\Category::toLayer($_navlist); }else { $_navlist = \Common\Lib\Category::toLayer($_navlist, 'child', $_typeid); } foreach($_navlist as $autoindex => $navlist): $navlist['url'] = get_url($navlist); if($navlist["id"] > 3): ?><li> 
+				   <div class="m_f_a">
+					  <a href="<?php echo ($navlist["url"]); ?>"><?php echo ($navlist["name"]); ?></a>
+					  <i></i>
+				   </div>
+				   <?php if(!empty($navlist['child'])): ?><div class="m_s_nav">
+						  <?php if(is_array($navlist['child'])): $i = 0; $__LIST__ = $navlist['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='<?php echo (get_url($vo)); ?>'><?php echo ($vo["name"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+					   </div><?php endif; ?>
+				   
+				</li><?php endif; endforeach;?>        		
+	 </ul>
+  </div>
+</div>
+<!-- 手机端导航--结束 -->      
+<!--banner-->
+<div class="nybaner">
+	<div class="nymeng">
+    	<div class="position">
+        <div class="container">
+            <h3 aos="fade-left"><?php echo ($pid_cate['name']); ?></h3>
+            </div>
+        </div>
+         <img src="<?php echo ($pid_cate["cat_pic"]); ?>" class="hidden-xs" width="100%">
+        <img src="<?php echo ($pid_cate["image"]); ?>" class="visible-xs" width="100%">
+    </div>
+</div> 
+<div class="content">
+	<div class="container">
+    	<div class="eventz">
+        <div class="events_right">
+        	<ul>
+	<?php
+ $_typeid = intval('4'); $_type = 'son'; $_temp = explode(',', "10"); $_temp[0] = $_temp[0] > 0? $_temp[0] : 10; if (isset($_temp[1]) && intval($_temp[1]) > 0) { $_limit[0] = $_temp[0]; $_limit[1] = intval($_temp[1]); }else { $_limit[0] = 0; $_limit[1] = $_temp[0]; } if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); if (1 == 1) { $__catlist = get_category(10); } else{ $__catlist = get_category(1); } if (0) { $__catlist = \Common\Lib\Category::getLevelOfModelId($__catlist, 0); } if (1 == 0) { $__catlist = \Common\Lib\Category::clearPageAndLink($__catlist); } if($_typeid == 0 || $_type == 'top') { $_catlist = \Common\Lib\Category::toLayer($__catlist); }else { if ($_type == 'self') { $_typeinfo = \Common\Lib\Category::getSelf($__catlist, $_typeid ); $_catlist = \Common\Lib\Category::toLayer($__catlist, 'child', $_typeinfo['pid']); }else { $_catlist = \Common\Lib\Category::toLayer($__catlist, 'child', $_typeid); } } foreach($_catlist as $autoindex => $catlist): if($autoindex < $_limit[0]) continue; if($autoindex >= ($_limit[1]+$_limit[0])) break; $catlist['url'] = get_url($catlist); ?><li <?php if($cid == $catlist[id]||$cate[pid]==$catlist[id]): ?>class="on"<?php endif; ?>><a href="<?php echo ($catlist["url"]); ?>"><?php echo ($catlist["name"]); ?></a></li><?php endforeach;?>
+</ul>
+        </div>
+    	<div class="events_left">
+        	<h4 class="eventsub"><?php echo ($cate["name"]); ?></h4>
+            <div class="eventcont">
+			<?php echo ($cate["des"]); ?>
+            	
+                
+		<div class="pro">
+			<div class="eventpositon">
+                <div class="timeline"></div>
+                <div class="time">
+					<?php
+ $_typeid = $cid; $_keyword = ''; if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_table_name = ''; if (!empty($_typeid)) { $_typeid_arr = explode(',',$_typeid); $ids_arr = array(); foreach($_typeid_arr as $_typeid_key => $_typeid_val) { $_typeid_val = intval($_typeid_val); if (empty($_typeid_val)) { continue; } if (empty($_table_name)) { $_selfcate = \Common\Lib\Category::getSelf(get_category(10), $_typeid_val); $_table_name = strtolower($_selfcate['table_name']); } $_typeid_ids = \Common\Lib\Category::getChildsId(get_category(10), $_typeid_val, true); $ids_arr = array_merge($ids_arr,$_typeid_ids); } $ids_arr = array_unique($ids_arr); if ($_table_name == '') { $_table_name = 'article'; } $where = array($_table_name.'.delete_status' => 0, 'cate_status' => array('LT',2)); if (!empty($ids_arr)) { $where[$_table_name.'.cid'] = array('IN',$ids_arr); } }else { $_table_name = 'article'; $where = array($_table_name.'.delete_status' => 0, 'cate_status' => array('LT',2)); } if (0 > 0 && 0 > 0) { $where[$_table_name.'.point'] = array('between',array(0,0)); }else if (0 > 0) { $where[$_table_name.'.point'] = array('EGT', 0); }else if (0 > 0) { $where[$_table_name.'.point'] = array('ELT', 0); } if ($_keyword != '') { $where[$_table_name.'.title'] = array('like','%'.$_keyword.'%'); } if (0 > 0) { $where['_string'] = $_table_name.'.flag & 0 = 0 '; } if (!empty($_table_name) && $_table_name != 'page') { if (0 > 0) { $count = D2('ArcView',"$_table_name")->where($where)->count(); $ename = I('e', '', 'htmlspecialchars,trim'); if (!empty($ename) && C('URL_ROUTER_ON') == true) { $param['p'] = I('p', 1, 'intval'); $param_action = '/'.$ename; }else { $param = array(); $param_action = ''; } $thisPage = new \Common\Lib\Page($count, 0, $param, $param_action); $thisPage->rollPage = 5; $thisPage->setConfig('theme'," %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%"); $limit = $thisPage->firstRow. ',' .$thisPage->listRows; $page = $thisPage->show(); }else { $limit = "100"; } $_list = D2('ArcView',"$_table_name")->nofield('content,picture_urls')->where($where)->order("point DESC,id DESC")->limit($limit)->select(); if (empty($_list)) { $_list = array(); } }else { $_list = array(); } foreach($_list as $autoindex => $list): $_jumpflag = ($list['flag'] & B_JUMP) == B_JUMP? true : false; $list['url'] = get_content_url($list['id'], $list['cid'], $list['ename'], $_jumpflag, $list['jump_url']); if(0) $list['title'] = str2sub($list['title'], 0, 0); if(0) $list['description'] = str2sub($list['description'], 0, 0); if(isset($list['picture_urls'])) $list['picture_urls'] = get_picture_array($list['picture_urls']); ?><div class="item text-center">
+							<span><?php echo ($list["title"]); ?></span>
+						</div><?php endforeach;?>
+                    
+                </div>
+            </div>
+			<div class="timecontent">
+				<?php
+ $_typeid = $cid; $_keyword = ''; if($_typeid == -1) $_typeid = I('cid', 0, 'intval'); $_table_name = ''; if (!empty($_typeid)) { $_typeid_arr = explode(',',$_typeid); $ids_arr = array(); foreach($_typeid_arr as $_typeid_key => $_typeid_val) { $_typeid_val = intval($_typeid_val); if (empty($_typeid_val)) { continue; } if (empty($_table_name)) { $_selfcate = \Common\Lib\Category::getSelf(get_category(10), $_typeid_val); $_table_name = strtolower($_selfcate['table_name']); } $_typeid_ids = \Common\Lib\Category::getChildsId(get_category(10), $_typeid_val, true); $ids_arr = array_merge($ids_arr,$_typeid_ids); } $ids_arr = array_unique($ids_arr); if ($_table_name == '') { $_table_name = 'article'; } $where = array($_table_name.'.delete_status' => 0, 'cate_status' => array('LT',2)); if (!empty($ids_arr)) { $where[$_table_name.'.cid'] = array('IN',$ids_arr); } }else { $_table_name = 'article'; $where = array($_table_name.'.delete_status' => 0, 'cate_status' => array('LT',2)); } if (0 > 0 && 0 > 0) { $where[$_table_name.'.point'] = array('between',array(0,0)); }else if (0 > 0) { $where[$_table_name.'.point'] = array('EGT', 0); }else if (0 > 0) { $where[$_table_name.'.point'] = array('ELT', 0); } if ($_keyword != '') { $where[$_table_name.'.title'] = array('like','%'.$_keyword.'%'); } if (0 > 0) { $where['_string'] = $_table_name.'.flag & 0 = 0 '; } if (!empty($_table_name) && $_table_name != 'page') { if (0 > 0) { $count = D2('ArcView',"$_table_name")->where($where)->count(); $ename = I('e', '', 'htmlspecialchars,trim'); if (!empty($ename) && C('URL_ROUTER_ON') == true) { $param['p'] = I('p', 1, 'intval'); $param_action = '/'.$ename; }else { $param = array(); $param_action = ''; } $thisPage = new \Common\Lib\Page($count, 0, $param, $param_action); $thisPage->rollPage = 5; $thisPage->setConfig('theme'," %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%"); $limit = $thisPage->firstRow. ',' .$thisPage->listRows; $page = $thisPage->show(); }else { $limit = "100"; } $_list = D2('ArcView',"$_table_name")->nofield('')->where($where)->order("point DESC,id DESC")->limit($limit)->select(); if (empty($_list)) { $_list = array(); } }else { $_list = array(); } foreach($_list as $autoindex => $list): $_jumpflag = ($list['flag'] & B_JUMP) == B_JUMP? true : false; $list['url'] = get_content_url($list['id'], $list['cid'], $list['ename'], $_jumpflag, $list['jump_url']); if(0) $list['title'] = str2sub($list['title'], 0, 0); if(0) $list['description'] = str2sub($list['description'], 0, 0); if(isset($list['picture_urls'])) $list['picture_urls'] = get_picture_array($list['picture_urls']); ?><div class="item">
+						<div class="eventdown">
+							<!--<P>
+							<img src="<?php echo ($list["litpic"]); ?>">
+							</P>-->
+							<?php echo ($list["content"]); ?>
+						</div>
+						
+					</div><?php endforeach;?>				
+			</div>
+		</div>
+                <?php if($cid != 24): ?><div class="eventlink">
+                	<a href="https://www.widc2016.com/" target="_blank">More About WIDC</a>
+                </div><?php endif; ?>	
+				
+            </div>
+        </div>
+        <div class="clear"></div>
+		</div>
+    <div class="clear"></div>
+	</div>    
+    
+    
+    
+</div>
+
+
+
+<div class="rightnav">
+	<div class="contact hidden-xs"><i></i><span>+86-535-8209019</span></div>
+    <div class="back-top"><i class="glyphicon glyphicon-arrow-up"></i></div>
+</div>
+<footer>
+	<div class="container">
+    <div class="footnav">	
+	<a href="<?php
+ $_typeid = intval('1'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于</a>
+	<a href="<?php
+ $_typeid = intval('8'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于 WIDAC</a>
+	<a href="<?php
+ $_typeid = intval('6'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">资源</a>
+	<a href="<?php
+ $_typeid = intval('9'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">关于 IDWE</a>
+	<a href="<?php
+ $_typeid = intval('3'); $_level = "self"; $_category_all = get_category(0); if ($_level == 'parent') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 1); } else if ($_level == 'top') { $type = \Common\Lib\Category::getParent($_category_all, $_typeid, 2); } else { $type = \Common\Lib\Category::getSelf($_category_all, $_typeid); } if (!empty($type)): $type['url'] = get_url($type); echo ($type["url"]); endif;?>">加入WIDA</a>
+	</div>
+    <div class="footcopy">Copyright 2020 Global Design Industry Organization&nbsp;&nbsp;<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278909326'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1278909326%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>Email: <?php echo C('CFG_EMAIL');?>&nbsp;&nbsp;Address: 30F, East Tower, Chuangye Building, 69 Keji Avenue, High-tech Zone, Yantai, Shandong</div>
+    </div>
+</footer>
+ 
+<script type="text/javascript" src="/Public/Home/default/3153/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src='/Public/Home/default/3153/js/script.js'></script>
+<script type="text/javascript" src='/Public/Home/default/3153/js/myjquery.js'></script>
+
+<!--event-->
+<script src="/Public/Home/default/3153/js/slick.min.js"></script>
+<script>
+    $(function() {
+        $(".time").slick({
+            autoplay: false,
+            arrows: true,
+            dots: false,
+            centerMode: true,
+            centerPadding: "0px",
+            autoplaySpeed: 4000,
+            slidesToShow: 3,
+            touchMove: false,
+            focusOnSelect:true,
+            asNavFor: ".timecontent"
+        });
+        $(".timecontent").slick({
+            autoplay: false,
+            arrows: false,
+            dots: false,
+			touchMove: false,
+            centerPadding: "0px",
+            autoplaySpeed: 4000,
+            slidesToShow: 1,
+            asNavFor: ".time"
+        });
+        $(".r").find("p").hover(function() {
+            $(".r").find("p").removeClass("act");
+            $(this).addClass("act");
+            var i = $(this).attr("data-img");
+            $(".l").find("img").removeClass("act");
+            $(".l").find("img").filter("[data-img=" + i + "]").addClass("act");
+        });
+        $(".time").find("button").click(function(){
+            $(".r").find("p").removeClass("act");
+        })
+        $(".time").find(".item").click(function(){
+            $(".r").find("p").removeClass("act");
+        })
+    });
+</script>
+
+
+
+<script src="/Public/Home/default/3153/js/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+<script src="/Public/Home/default/3153/js/owl.carousel.js"></script>
+<script>
+$(document).ready(function() {
+      $('.pcbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+	   $('.secbanner').owlCarousel({
+        loop:true,
+        margin:0,
+        pagination:false,
+        autoplay: true,
+        autoplayTimeout:3000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:1,
+            nav: true,
+          },
+          1000: {
+            items:1,
+            nav: true,
+          }
+        }
+      });
+	   $('.case').owlCarousel({
+        loop:false,
+        margin:60,
+        pagination:false,
+        autoplay: false,
+        autoplayTimeout:6000,
+        autoplayHoverPause: true,
+        navigation:false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items:2,
+			margin:25,
+            nav: true,
+          },
+          1099: {
+            items:2,
+			margin:25,
+            nav: true,
+          },
+		  1100: {
+            items:3,
+			margin:25,
+            nav: false,
+          },
+		  1359: {
+            items:3,
+			margin:35,
+            nav: false,
+          }
+        }
+      });
+      
+    })
+
+</script>
+
+<script src="/Public/Home/default/3153/js/bootstrap.js" type="text/javascript"></script>
+
+
+</body>
+</html>
