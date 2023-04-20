@@ -35,12 +35,12 @@
         	<ul>
 				<yang:list typeid="$cid" pagesize='6' pageroll='4'>
 					<li>
-						<a href="{$list.url}">
+<!--						<a href="{$list.url}">-->
 						<div class="newnpic"><img src="{$list.litpic}" alt="{$list.title}"></div>
 						<div class="newcont">
 							<em></em>
 							<h4>{$list.title}</h4>
-							<span>{$list.publish_time|get_date=###,'F d, Y'}</span>
+							<span>{$list.publish_time|get_date=###,'Y-m-d'}</span>
 						</div>
 						</a>
 					</li>
